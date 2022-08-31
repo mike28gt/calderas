@@ -1,7 +1,12 @@
+<?php
+	include 'business/caldera.php';
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="refresh" content="60">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -19,10 +24,11 @@
             <li><a href="/">Home</a></li>
             <li><a href="#">Calderas <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown__menu">
-                    <ul>
-                        <li><a href="caldera2.html">Caldera 2</a></li>
-                        <li><a href="caldera3.html">Caldera 3</a></li>
-                        <li><a href="caldera4.html">Caldera 4</a></li>
+		    <ul>
+			<li><a href="caldera.php?caldera=1">Caldera 1</a></li>
+                        <li><a href="caldera.php?caldera=2">Caldera 2</a></li>
+                        <li><a href="caldera.php?caldera=3">Caldera 3</a></li>
+                        <li><a href="caldera.php?caldera=4">Caldera 4</a></li>
                     </ul>
                 </div></li>
                 <!--<li><a href="#">Proceso<i class="fa-solid fa-temperature-arrow-up"></i></a>
@@ -56,7 +62,7 @@
     </div>
 
     <div class="header">
-        <h1 class="title">CALDERA 1 EN TIEMPO REAL</h1>
+    <h1 class="title">CALDERA <?php echo $caldera->get_num_caldera(); ?> EN TIEMPO REAL</h1>
     </div>
 
 <div class="screen">
@@ -64,39 +70,39 @@
             <form action="/" class="variables">
                     <label class="input-group mb-3">
                         <span class="input-group-text" id="f">1. Nivel de Agua Alto</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+			<input type="text" class="form-control" id="f" value="<?php echo $nivel_agua_alto->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </label>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">2. Nivel de Agua Bajo</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $nivel_agua_bajo->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">3. Presion Baja Vapor</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $presion_baja_vapor->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">4. Presion Alta Vapor</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $presion_alto_vapor->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">5. Presion de Bunker</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $presion_bunker->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">6. Gas Propano</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $gas_propano->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">7. Flama</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $flama->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">8. Temp. de Agua</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $temperatura_agua->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="f">9. Temp. de Chimenea</span>
-                        <input type="text" class="form-control" id="f" value="%" name="fecha">
+                        <input type="text" class="form-control" id="f" value="<?php echo $temperatura_chimenea->get_ultimo_registro($id_caldera); ?>" name="fecha">
                     </div>
             </form>
     </div>

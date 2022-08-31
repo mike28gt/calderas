@@ -17,10 +17,10 @@
             <li><a href="#">Calderas<i class="fas fa-caret-down"></i></a>
                 <div class="dropdown__menu">
                     <ul>
-                        <li><a href="caldera1.html">Caldera 1</a></li>
-                        <li><a href="caldera2.html">Caldera 2</a></li>
-                        <li><a href="caldera3.html">Caldera 3</a></li>
-                        <li><a href="caldera4.html">Caldera 4</a></li>
+                        <li><a href="caldera.php?caldera=1">Caldera 1</a></li>
+                        <li><a href="caldera.php?caldera=2">Caldera 2</a></li>
+                        <li><a href="caldera.php?caldera=3">Caldera 3</a></li>
+                        <li><a href="caldera.php?caldera=4">Caldera 4</a></li>
                     </ul>
                 </div>
             </li>
