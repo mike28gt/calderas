@@ -50,11 +50,9 @@
                     </div></li>    
                     <li><a href="#"> Settings <i class="fa-solid fa-gear"></i></a>
                         <div class="dropdown__menu">
-                            <ul>
-                                <li><a href="set_temp1_agua.html">Temperatura de Agua</a></li>
-                                <li><a href="set_presiones1.html">Presion Alta y Baja</a></li>
-                                <li><a href="set_presion1_agua.html">Presion de Agua</a></li>
-                                <li><a href="set_temp_chim1.html">Temperatura de Chimenea</a></li>
+			    <ul>
+                                <li><a href="configuracion_parametros.php?medicion=temp_agua">Temperatura de Agua</a></li>
+                                <li><a href="configuracion_parametros.php?medicion=temp_chimenea">Temperatura de Chimenea</a></li>
                             </ul>
                         </div></li>
 
