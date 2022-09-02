@@ -21,7 +21,7 @@
             <a class="logo__s" href="/"><img class="logo__img" src="./img/cmi_logo.jpg" alt=""></a>
         </div>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/calderas">Home</a></li>
             <li><a href="#">Calderas <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown__menu">
 		    <ul>
