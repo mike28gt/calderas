@@ -1,5 +1,12 @@
 <?php 
 	include('../procs/db_connection.php');
+	include('temperatura_agua.php');
+
+	$temperaturaAguaObj = new TemperaturaAgua();
+	$result = $temperaturaAguaObj->getDatosReporteAlertas("31/08/2022", "07/09/2022", 1, "mayor", 0);
+	echo print_r($result);
+
+	/*
 	include 'medicion.php';
 	include 'caldera.php';
 
@@ -18,4 +25,5 @@
 //	echo print_r($testObj->obtenerConfiguracionParametros($calderaIdDefault));
 	$calderaObj = new Caldera();
 	echo print_r($calderaObj->getCalderasActivas());
+	*/
 ?>

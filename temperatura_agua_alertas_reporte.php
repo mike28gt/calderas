@@ -10,6 +10,7 @@
     <link href="js/c3-0.7.20/c3.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/c3-0.7.20/docs/js/d3-5.8.2.min.js"></script>
     <script type="text/javascript" src="js/c3-0.7.20/c3.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
 
     <title>Centro de datos de Calderas</title>
 </head>
@@ -38,7 +39,7 @@
                 <li><a href="#"> Graficas<i class="fa-solid fa-chart-bar"></i></a>
                     <div class="dropdown__menu">
                         <ul>
-                            <li><a href="temp_agua1_graph.php">Temperatura Agua</a></li>
+                            <li><a href="temperatura_agua_alertas_reporte.php">Temperatura de Agua</a></li>
                             <li><a href="niveles_agua1_graph.html">Nivel de Agua</a></li>
                             <li><a href="presiones_vapor1_graph.html">Presion de vapor</a></li>
                             <li><a href="presiones_bunker1_graph.html">Presion Bunker</a></li>
@@ -68,14 +69,66 @@
 </div>     
 </body>
 <script type="text/javascript">
-var chart = c3.generate({
-    bindto: '#chart',
-    data: {
-      columns: [
-        ['data1', 30, 200, 100, 400, 150, 250],
-        ['data2', 50, 20, 10, 40, 15, 25]
-      ]
-    }
-});
+
+    $(document).ready(function() {
+        
+        var chart = c3.generate({
+            bindto: '#chart',
+            data: {
+                x: 'x',
+                json: {
+                    x: [],
+                    'Alertas superiores al máximo': [],
+                    'Alertas inferiores al mínimo': []
+                }
+            },
+            axis: {
+                x: {
+                    type: 'category',
+                    label: {
+                        text: 'Fechas',
+                        position: 'outer-center'
+                    },
+                    tick: {
+                        rotate: 75,
+                        multiline: false
+                    }
+                },
+                y: {
+                    label: {
+                        text: 'Cantidad de Alertas',
+                        position: 'outer-middle'
+                    }
+                }
+            },
+            grid: {
+                x: {
+                    show: true
+                },
+                y: {
+                    show: true
+                }
+            }
+    });
+
+        $.ajax({
+            method: "POST",
+            //url: "tomar URL de PHP",
+            url: "business/ajax-list/temperatura_agua_alertas_ajax.php",
+            data: {"calderaId": 1, "fechaInicio": "31/08/2022", "fechaFin": "07/09/2022", "temperaturaMaxima": 10, "temperaturaMinima": 5}
+	    }).done(function(msg) {
+            //console.log(msg);
+            var responseJsonObject = JSON.parse(msg);
+
+            chart.load({
+                    json: responseJsonObject
+            });
+            
+        })
+        .fail(function(jqXHR, textStatus) {
+            console.log(textStatus);
+        });
+    });
+
 </script>
 </html>

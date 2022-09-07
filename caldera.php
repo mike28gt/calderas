@@ -40,7 +40,7 @@
                 <li><a href="#"> Graficas<i class="fa-solid fa-chart-bar"></i></a>
                     <div class="dropdown__menu">
 			<ul>
-			    <li><a href="temp_agua1_graph.php">Temperatura Agua</a></li>
+			    <li><a href="temperatura_agua_alertas_reporte.php">Temperatura de Agua</a></li>
                             <li><a href="niveles_agua1_graph.html">Nivel de Agua</a></li>
                             <li><a href="presiones_vapor1_graph.html">Presion de vapor</a></li>
                             <li><a href="presiones_bunker1_graph.html">Presion Bunker</a></li>
