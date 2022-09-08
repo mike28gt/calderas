@@ -1,7 +1,6 @@
 <?php
-	namespace Datos;
 
-	class AtributoConfiguracion() {
+	class AtributoConfiguracion {
 
 		function getByName($nombre) {
 			$conexion = new Conexion();
@@ -42,5 +41,5 @@
                         $conexion->cerrar_conn();
                         return $row;
 		}
-	}
+        }
 ?>

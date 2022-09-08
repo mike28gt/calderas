@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
 
     <title>Centro de datos de Calderas</title>
 </head>
@@ -20,7 +21,7 @@
             <a class="logo__s" href="/"><img class="logo__img" src="./img/cmi_logo.jpg" alt=""></a>
         </div>
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a href="/calderas">Home</a></li>
             <li><a href="#">Calderas <i class="fas fa-caret-down"></i></a>
                 <div class="dropdown__menu">
                     <ul>
@@ -38,12 +39,12 @@
                     </div></li>-->
                 <li><a href="#"> Graficas<i class="fa-solid fa-chart-bar"></i></a>
                     <div class="dropdown__menu">
-                        <ul>
+			<ul>
+			    <li><a href="temperatura_agua_alertas_reporte.php">Temperatura de Agua</a></li>
                             <li><a href="niveles_agua1_graph.html">Nivel de Agua</a></li>
                             <li><a href="presiones_vapor1_graph.html">Presion de vapor</a></li>
                             <li><a href="presiones_bunker1_graph.html">Presion Bunker</a></li>
                             <li><a href="flama1_graph.html">Flama</a></li>
-                            <li><a href="temp_agua1_graph.html">Temperatura Agua</a></li>
                             <li><a href="temp_chim1_graph.html">Temperatura Chimenea</a></li>
                         </ul>
                     </div></li>
@@ -68,4 +69,25 @@
     </div>
 </div>    
 </body>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		$(".get-data").focusout(function() {
+			var dataList = $(this).attr("id").split("-");
+			if (dataList.length == 3) {
+				$.ajax({
+					method: "POST",
+					url: "<?php echo $ajaxUrl ?>",
+					data: {"calderaId": dataList[0], "parametroMedicion": dataList[1], "medicion": dataList[2], "valor": $(this).val()}
+				})
+				.done(function(msg) {
+					console.log(msg);
+				})
+				.fail(function(jqXHR, textStatus) {
+					console.log(textStatus);
+				});
+			}	
+		});
+	});
+</script>
 </html>
