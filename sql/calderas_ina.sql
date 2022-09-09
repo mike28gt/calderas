@@ -20,6 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `calderas_ina`
 --
+USE calderas_ina;
 
 -- --------------------------------------------------------
 

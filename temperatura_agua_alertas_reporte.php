@@ -1,3 +1,7 @@
+<?php
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/negocio/temperatura_agua_alertas_reporte.php');
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +17,14 @@
     <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-datepicker.es.min.js"></script>
-
+<style>
+.screen-calderas {
+    padding: 50px 30px;
+    justify-content: center;
+    text-align: center;
+    background-image: url(./img/background.jpeg);
+}
+</style>
     <title>Centro de datos de Calderas</title>
 </head>
 <body>
@@ -61,36 +72,54 @@
     </div>
 
     <div class="header">
-        <h1 class="title">Grafica de Temperatura de agua Caldera 1</h1>
+        <h1 class="title">Gr&aacute;fica de Temperatura de Agua</h1>
     </div>
 
-<div class="screen">
+<div class="screen-calderas">
     <div>
-        <div class="input-group input-daterange">
-            <input type="text" id="fechaInicio" class="form-control">
-            <div class="input-group-addon">&nbsp;a&nbsp;&nbsp;</div>
-            <input type="text" id="fechaFin" class="form-control">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10 text-start">
+                <label class="form-label">Seleccione una caldera:&nbsp;&nbsp;</label><?php echo $calderasFiltrosHtml ?>
+            </div>
+            <div class="col-1"></div>
         </div>
-        <div id="chart"></div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-auto text-start">
+                <div class="input-group input-daterange">
+                    <label class="form-label">Seleccione el rango de fechas:&nbsp;&nbsp;</label>
+                    <input type="text" id="fechaInicio" class="form-control">
+                    <div class="input-group-addon">&nbsp;a&nbsp;&nbsp;</div>
+                    <input type="text" id="fechaFin" class="form-control">
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <br /><br />
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div id="chart"></div>
+            </div>
+            <div class="col-1"></div>
+        </div>
     </div>
 </div>     
 </body>
 <script type="text/javascript">
 
-    function refrescarGrafica() {
+    function refrescarGrafica(chart) {
         $.ajax({
             method: "POST",
-            //url: "tomar URL de PHP",
-            url: "business/ajax-list/temperatura_agua_alertas_ajax.php",
-            data: {"calderaId": 1, "fechaInicio": "31/08/2022", "fechaFin": "07/09/2022", "temperaturaMaxima": 10, "temperaturaMinima": 5}
+            url: "<?php echo $ajaxUrl ?>",
+            data: {"calderaId": $("input[name='filtroCaldera']:checked").val(), "fechaInicio": $("#fechaInicio").val(), "fechaFin": $("#fechaFin").val(), "temperaturaMaxima": $("input[name='filtroCaldera']:checked").attr("temp_max"), "temperaturaMinima": $("input[name='filtroCaldera']:checked").attr("temp_min")}
 	    }).done(function(msg) {
             //console.log(msg);
             var responseJsonObject = JSON.parse(msg);
-
             chart.load({
                     json: responseJsonObject
             });
-            
         })
         .fail(function(jqXHR, textStatus) {
             console.log(textStatus);
@@ -100,11 +129,19 @@
     $(document).ready(function() {
         
         var fechaActual = new Date();
-        var fechaInicio = fechaActual - 5;
-        var fechaInicioStr = fechaActual.getDate() + "/" + (fechaActual.getMonth()+1) + "/" + fechaActual.getFullYear();
-        $("#fechaInicio").val();
-        $("#fechaFin").val();
+        var fechaInicio = new Date();
+        
+        fechaInicio.setDate(fechaActual.getDate() - <?php echo $intervaloDias ?>);
 
+        var fechaFinStr = String(fechaActual.getDate()).padStart(2,'0') + "/" + 
+                          String(fechaActual.getMonth()+1).padStart(2, '0') + "/" + 
+                          String(fechaActual.getFullYear()).padStart(2, '0');
+        var fechaInicioStr = String(fechaInicio.getDate()).padStart(2,'0') + "/" + 
+                             String(fechaInicio.getMonth()+1).padStart(2, '0') + "/" + 
+                             String(fechaInicio.getFullYear()).padStart(2, '0');
+        $("#fechaInicio").val(fechaInicioStr);
+        $("#fechaFin").val(fechaFinStr);
+        $("input[name='filtroCaldera']").first().prop('checked', true);
 
         $('.input-daterange input').each(function() {
             $(this).datepicker({
@@ -153,7 +190,12 @@
                 }
             }
         });
-    });
 
+        $("#fechaInicio, #fechaFin, input[name='filtroCaldera']").change(function() {
+            refrescarGrafica(chart);
+        });
+
+        refrescarGrafica(chart);
+    });
 </script>
 </html>

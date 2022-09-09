@@ -1,6 +1,6 @@
 <?php
 
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/medicion.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/medicion.php');
 
 	$calderaId = $_POST["calderaId"];
 	$nombreParametroMedicion = $_POST["parametroMedicion"];
