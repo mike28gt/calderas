@@ -2,7 +2,7 @@
 
 use TemperaturaAgua as GlobalTemperaturaAgua;
 
-include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/temperatura_agua.php');
+require($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/temperatura_agua.php');
 
     class TemperaturaAgua {
     

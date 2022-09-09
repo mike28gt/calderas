@@ -1,5 +1,5 @@
 <?php 
-	include('../procs/db_connection.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/db_connection.php');
 	include 'temperatura_agua.php';
 
 	$testObj = new TemperaturaAguaDatos();

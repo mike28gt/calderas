@@ -60,7 +60,7 @@
     </div>
 
     <div class="header">
-    <h1 class="title">CALDERA <?php echo $caldera->get_num_caldera(); ?> EN TIEMPO REAL</h1>
+    <h1 class="title">Caldera <?php echo $caldera->get_num_caldera(); ?> en Tiempo Real</h1>
     </div>
 
 <div class="screen">
@@ -114,6 +114,5 @@
     </div>-->
     </div>
 </div> 
-<script src="../index.js"></script>    
 </body>
 </html>

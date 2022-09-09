@@ -1,5 +1,4 @@
 <?php
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/procs/db_connection.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/caldera.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/medicion.php');
 

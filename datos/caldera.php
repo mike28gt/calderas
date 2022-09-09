@@ -1,15 +1,17 @@
 <?php
 
+	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/db_connection.php');
+
 	class CalderaDatos {
 
-                private $id;
-                private $num_caldera;
-                private $fecha;
+		private $id;
+		private $num_caldera;
+		private $fecha;
 
-                function __construct() {
-                        $this->id = 0;
-                        $this->num_caldera = 0;
-                        $this->fecha = null;
+		function __construct() {
+			$this->id = 0;
+			$this->num_caldera = 0;
+			$this->fecha = null;
 		}
 
 		function set_id($id) {
@@ -37,15 +39,15 @@
                 }
 
 		public function selectCalderasActivas() {
-                        $conexion = new Conexion();
-                        $conn = $conexion->get_conn();
-
-                        $stmt = $conn->prepare("SELECT id as calderaId, num_caldera as numeroCaldera FROM caldera");
-                        $stmt->execute();
-                        $resultado = $stmt->get_result();
+			$conexion = new Conexion();
+			$conn = $conexion->get_conn();
+			
+			$stmt = $conn->prepare("SELECT id as calderaId, num_caldera as numeroCaldera FROM caldera");
+			$stmt->execute();
+			$resultado = $stmt->get_result();
 			$rows = array();
 
-                        if ($resultado->num_rows > 0) {
+			if ($resultado->num_rows > 0) {
 				while ($row = $resultado->fetch_assoc()) {
 					array_push($rows, $row);
 				}
@@ -53,8 +55,10 @@
 			else {
 				$rows = NULL;
 			}
+
 			$stmt->close();
 			$conexion->cerrar_conn();
+			
 			return $rows;
 		}
 

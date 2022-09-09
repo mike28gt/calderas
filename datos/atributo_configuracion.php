@@ -1,4 +1,5 @@
 <?php
+        require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/db_connection.php');
 
 	class AtributoConfiguracion {
 

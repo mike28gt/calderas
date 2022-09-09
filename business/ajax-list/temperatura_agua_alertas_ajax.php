@@ -1,6 +1,5 @@
 <?php
 
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/procs/db_connection.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/temperatura_agua.php');
 
 	$calderaId = $_POST["calderaId"];
