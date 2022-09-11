@@ -1,9 +1,15 @@
 <?php 
-	include('presion_vapor.php');
+	include('gas_propano.php');
 
+	$temperaturaChimeneaObj = new GasPropano();
+	$result = $temperaturaChimeneaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1);
+	echo print_r($result);
+
+	/*
 	$temperaturaChimeneaObj = new PresionVapor();
 	$result = $temperaturaChimeneaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "meno", 5);
 	echo print_r($result);
+	*/
 
 	/*
 	$temperaturaChimeneaObj = new TemperaturaChimenea();
