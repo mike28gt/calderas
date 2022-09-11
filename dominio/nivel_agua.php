@@ -1,18 +1,24 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/temperatura_agua.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/nivel_agua_alto.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/nivel_agua_bajo.php');
 
-    class TemperaturaAgua {
+    class NivelAgua {
     
-        public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId, $tipoAlerta, $valorAlerta) {
-            $temperaturaAguaDatosObj = new TemperaturaAguaDatos();
+        public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId, $tipoAlerta) {
 
+            if ($tipoAlerta == "mayor") {
+                $nivelAguaDatosObj = new NivelAguaAltoDatos();
+            } else {
+                $nivelAguaDatosObj = new NivelAguaBajoDatos();
+            }
+            
             $partesFecha = explode("/", $fechaInicio);
             $fechaInicioObj = new DateTime($partesFecha[2]."-".$partesFecha[1]."-".$partesFecha[0]." 00:00:00");
             $partesFecha = explode("/", $fechaFin);
             $fechaFinObj = new DateTime($partesFecha[2]."-".$partesFecha[1]."-".$partesFecha[0]." 23:59:59");
             
-            $rows = $temperaturaAguaDatosObj->getCantidadAlertasPorFechaPorCaldera($fechaInicioObj, $fechaFinObj, $calderaId, $tipoAlerta, $valorAlerta);
+            $rows = $nivelAguaDatosObj->getCantidadAlertasPorFechaPorCaldera($fechaInicioObj, $fechaFinObj, $calderaId);
             
             $series = array();
             $serieX = array();

@@ -39,13 +39,14 @@
                     </div></li>-->
                 <li><a href="#"> Graficas<i class="fa-solid fa-chart-bar"></i></a>
                     <div class="dropdown__menu">
-			<ul>
-			    <li><a href="temperatura_agua_alertas_reporte.php">Temperatura de Agua</a></li>
-                            <li><a href="niveles_agua1_graph.html">Nivel de Agua</a></li>
-                            <li><a href="presiones_vapor1_graph.html">Presion de vapor</a></li>
-                            <li><a href="presiones_bunker1_graph.html">Presion Bunker</a></li>
-                            <li><a href="flama1_graph.html">Flama</a></li>
-                            <li><a href="temp_chim1_graph.html">Temperatura Chimenea</a></li>
+                        <ul>
+                            <li><a href="graficas.php?medicion=temp_agua">Temperatura de Agua</a></li>
+                            <li><a href="graficas.php?medicion=nivel_agua">Nivel de Agua</a></li>
+                            <li><a href="graficas.php?medicion=presion_vapor">Presion de vapor</a></li>
+                            <li><a href="graficas.php?medicion=presion_bunker">Presion Bunker</a></li>
+			                <li><a href="graficas.php?medicion=flama">Flama</a></li>
+                            <li><a href="graficas.php?medicion=temp_chimenea">Temperatura Chimenea</a></li>
+                            <li><a href="graficas.php?medicion=gas_propano">Gas Propano</a></li>
                         </ul>
                     </div></li>
                     <li><a href="#"> Settings <i class="fa-solid fa-gear"></i></a>

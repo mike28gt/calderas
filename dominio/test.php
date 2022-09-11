@@ -1,9 +1,8 @@
 <?php 
-	include('../procs/db_connection.php');
-	include('temperatura_agua.php');
+	include('nivel_agua.php');
 
-	$temperaturaAguaObj = new TemperaturaAgua();
-	$result = $temperaturaAguaObj->getDatosReporteAlertas("31/08/2022", "07/09/2022", 1, "mayor", 0);
+	$nivelAguaObj = new NivelAgua();
+	$result = $nivelAguaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "menor");
 	echo print_r($result);
 
 	/*
