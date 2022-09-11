@@ -1,8 +1,8 @@
 <?php 
-	include('nivel_agua.php');
+	include('temperatura_chimenea.php');
 
-	$nivelAguaObj = new NivelAgua();
-	$result = $nivelAguaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "menor");
+	$temperaturaChimeneaObj = new TemperaturaChimenea();
+	$result = $temperaturaChimeneaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "menor", 5);
 	echo print_r($result);
 
 	/*
