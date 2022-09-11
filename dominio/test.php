@@ -1,10 +1,15 @@
 <?php 
-	include('temperatura_chimenea.php');
+	include('presion_vapor.php');
 
+	$temperaturaChimeneaObj = new PresionVapor();
+	$result = $temperaturaChimeneaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "meno", 5);
+	echo print_r($result);
+
+	/*
 	$temperaturaChimeneaObj = new TemperaturaChimenea();
 	$result = $temperaturaChimeneaObj->getDatosReporteAlertas("31/08/2022", "10/09/2022", 1, "menor", 5);
 	echo print_r($result);
-
+	*/
 	/*
 	include 'medicion.php';
 	include 'caldera.php';
