@@ -3,7 +3,7 @@
     require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/caldera.php');
     require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/medicion.php');
 
-    $ajaxUrl = "business/ajax-list/temperatura_agua_alertas_ajax.php";
+    $ajaxUrl = "negocio/ajax-list/temperatura_agua_alertas_ajax.php";
     $intervaloDias = 7;
     $calderaObj = new Caldera();
     $calderasLista = $calderaObj->getCalderasActivas();
