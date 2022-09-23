@@ -11,7 +11,7 @@
 
 	$resultadoArray = array();
 	$resultadoArray["x"] = $alertasArray["serieX"];
-	$resultadoArray["Alertas"] = $alertasArray["serieY"];
+	$resultadoArray["Ausencia de presión"] = $alertasArray["serieY"];
 	
 	echo json_encode($resultadoArray);
 ?>

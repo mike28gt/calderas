@@ -1,7 +1,7 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/presion_vapor_alta.php');
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/presion_vapor_baja.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/presion_vapor_alta.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/presion_vapor_baja.php');
 
     class PresionVapor {
     

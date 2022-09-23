@@ -1,5 +1,23 @@
 USE Calderas;
 
+ALTER TABLE dbo.caldera3 ADD tempagua real;
+ALTER TABLE dbo.caldera4 ADD tempagua real;
+
+ALTER TABLE dbo.caldera1 ADD temchimenea real;
+ALTER TABLE dbo.caldera2 ADD temchimenea real;
+ALTER TABLE dbo.caldera3 ADD temchimenea real;
+ALTER TABLE dbo.caldera4 ADD temchimenea real;
+
+EXEC sp_rename 
+@objname = 'dbo.caldera1.presionbunk', 
+@newname = 'presionbunker', 
+@objtype = 'COLUMN';
+
+EXEC sp_rename 
+@objname = 'dbo.caldera4.presionbunk', 
+@newname = 'presionbunker', 
+@objtype = 'COLUMN';
+
 IF NOT EXISTS (SELECT 1
 FROM sys.tables t 
 JOIN sys.schemas s ON (t.schema_id = s.schema_id)

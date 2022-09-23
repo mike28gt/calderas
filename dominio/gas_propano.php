@@ -1,6 +1,6 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/gas_propano.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/gas_propano.php');
 
     class GasPropano {
     

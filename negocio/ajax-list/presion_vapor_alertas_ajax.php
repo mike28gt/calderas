@@ -12,8 +12,8 @@
 
 	$resultadoArray = array();
 	$resultadoArray["x"] = $alertasMayoresArray["serieX"];
-	$resultadoArray["Alertas superiores al máximo"] = $alertasMayoresArray["serieY"];
-	$resultadoArray["Alertas inferiores al mínimo"] = $alertasMenoresArray["serieY"];
+	$resultadoArray["Alertas presión alta"] = $alertasMayoresArray["serieY"];
+	$resultadoArray["Alertas presión baja"] = $alertasMenoresArray["serieY"];
 	
 	echo json_encode($resultadoArray);
 ?>

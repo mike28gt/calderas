@@ -1,6 +1,6 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/temperatura_chimenea.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/temperatura_chimenea.php');
 
     class TemperaturaChimenea {
     

@@ -84,8 +84,8 @@
                 x: 'x',
                 json: {
                     x: [],
-                    'Alertas superiores al máximo': [],
-                    'Alertas inferiores al mínimo': []
+                    'Alertas presión alta': [],
+                    'Alertas presión baja': []
                 }
             },
             axis: {

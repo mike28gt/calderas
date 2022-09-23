@@ -1,7 +1,7 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/nivel_agua_alto.php');
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/nivel_agua_bajo.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/nivel_agua_alto.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/nivel_agua_bajo.php');
 
     class NivelAgua {
     

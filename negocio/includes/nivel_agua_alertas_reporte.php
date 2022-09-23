@@ -84,8 +84,8 @@
                 x: 'x',
                 json: {
                     x: [],
-                    'Alertas superiores al máximo': [],
-                    'Alertas inferiores al mínimo': []
+                    'Alertas nivel alto': [],
+                    'Alertas nivel bajo': []
                 }
             },
             axis: {

@@ -84,7 +84,7 @@
                 x: 'x',
                 json: {
                     x: [],
-                    'Alertas': []
+                    'Flama apagada': []
                 }
             },
             axis: {

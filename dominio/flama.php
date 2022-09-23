@@ -1,6 +1,6 @@
 <?php
 
-    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/flama.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/flama.php');
 
     class Flama {
     
