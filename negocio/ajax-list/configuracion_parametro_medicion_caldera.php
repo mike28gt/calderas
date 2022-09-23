@@ -4,14 +4,14 @@
 
 	$calderaId = $_POST["calderaId"];
 	$nombreParametroMedicion = $_POST["parametroMedicion"];
-        $nombreMedicion = $_POST["medicion"];
+    $nombreMedicion = $_POST["medicion"];
 	$valor = $_POST["valor"];
 
 	$medicionObj = new Medicion();
 	$medicionObj->setNombre($nombreMedicion);
 	$parametrosDict = array();
 	$parametrosDict[$nombreParametroMedicion] = $valor;
-	$medicionObj->actualizarConfiguracionParametros($calderaId, $parametrosDict);		
+	$resultado = $medicionObj->actualizarConfiguracionParametros($calderaId, $parametrosDict);		
 
-	echo "Received " . $calderaId . " " . $nombreParametroMedicion . " " . $nombreMedicion . " " . $valor;		
+	echo "Received caldera:" . $calderaId . " parametroMedicion:" . $nombreParametroMedicion . " medicion:" . $nombreMedicion . " valor:" . $valor . " resultado:" . $resultado;
 ?>

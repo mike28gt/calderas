@@ -1,5 +1,5 @@
 <?php
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/caldera.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/caldera.php');
 
 	class Caldera {
 		private $calderasObj;

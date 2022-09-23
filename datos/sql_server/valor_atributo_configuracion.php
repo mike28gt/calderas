@@ -1,34 +1,44 @@
 <?php
 
-	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/db_connection.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/db_sql_server_connection.php');
 
 	class ValorAtributoConfiguracion {
 
 		function getByAtributoConfiguracionId($atributoConfiguracionId, $calderaId) {
 			$conexion = new Conexion();
-                        $conn = $conexion->get_conn();
+            $conn = $conexion->get_conn();
 
 			if ($calderaId == null) {
-                        	$stmt = $conn->prepare("SELECT * FROM valor_atributo_configuracion WHERE atributo_configuracion_id = ? AND caldera_id IS NULL");
-                        	$stmt->bind_param('i', $atributoConfiguracionId);
+				$sql = "SELECT * FROM valor_atributo_configuracion WHERE atributo_configuracion_id = ? AND caldera_id IS NULL";
+				$params = array(&$atributoConfiguracionId);
+				$stmt = sqlsrv_query($conn, $sql, $params);
+
+				//$stmt = $conn->prepare("SELECT * FROM valor_atributo_configuracion WHERE atributo_configuracion_id = ? AND caldera_id IS NULL");
+				//$stmt->bind_param('i', $atributoConfiguracionId);
 			}
 			else {
 			        $stmt = $conn->prepare("SELECT * FROM valor_atributo_configuracion WHERE atributo_configuracion_id = ? AND caldera_id = ?");
                                 $stmt->bind_param('ii', $atributoConfiguracionId, $calderaId);
 			}
-                        $stmt->execute();
-                        $resultado = $stmt->get_result();
 
-                        if ($resultado->num_rows > 0) {
-                                $row = $resultado->fetch_assoc();
-                        }
-                        else {
-                                $row = null;
-                        }
+			if ($stmt == false) {
+				if (($errors = sqlsrv_errors()) != null) {
+					foreach ($errors as $error) {
+						echo "SQLSTATE: ".$error[ 'SQLSTATE']."<br />";
+						echo "code: ".$error[ 'code']."<br />";
+						echo "message: ".$error[ 'message']."<br />";
+					}
+				}
 
-			$stmt->close();
-                        $conexion->cerrar_conn();
-                        return $row;	
+				$row = null;
+			} 
+			else {
+				$row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+			}
+
+			sqlsrv_free_stmt($stmt);
+			$conexion->cerrar_conn();
+            return $row;        
 		}
 
 		function agregarRegistro($valorAtributoConfiguracionObj) {

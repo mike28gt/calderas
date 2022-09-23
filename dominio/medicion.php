@@ -1,8 +1,8 @@
 <?php
 	//namespace Dominio;
 
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/configuracion_parametro_medicion_caldera.php');
-	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/medicion.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/configuracion_parametro_medicion_caldera.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/medicion.php');
 
 	class Medicion {
 		private $medicionId;
@@ -98,7 +98,8 @@
 		public function actualizarConfiguracionParametros($calderaId, $parametrosDict) {
 
 			foreach ($parametrosDict as $nombreParametroMedicion => $valor) {
-				$resultado =  $this->configuracionParametroMedicionCalderaObj->seleccionarActivo($calderaId, $this->nombre, $nombreParametroMedicion);
+				//$resultado =  $this->configuracionParametroMedicionCalderaObj->seleccionarActivo($calderaId, $this->nombre, $nombreParametroMedicion);
+				$resultado =  $this->configuracionParametroMedicionCalderaObj->buscarValorParametroConfiguracion($calderaId, $this->nombre, $nombreParametroMedicion);
 				if (is_null($resultado)) {
 					$this->configuracionParametroMedicionCalderaObj->insertar($calderaId, $this->nombre, $nombreParametroMedicion, $valor);
 				} else {

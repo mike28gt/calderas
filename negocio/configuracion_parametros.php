@@ -2,7 +2,7 @@
 	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/caldera.php');
 	include($_SERVER['DOCUMENT_ROOT'].'/calderas/dominio/medicion.php');
 
-	$ajaxUrl = "business/ajax-list/configuracion_parametro_medicion_caldera.php";
+	$ajaxUrl = "negocio/ajax-list/configuracion_parametro_medicion_caldera.php";
 
 	$nombreMedicion = $_GET["medicion"];
 	$calderaObj = new Caldera();

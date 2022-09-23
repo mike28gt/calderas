@@ -1,5 +1,5 @@
 <?php
-	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/business/configuracion_parametros.php');
+	require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/negocio/configuracion_parametros.php');
 ?>
 
 <html lang="en">
