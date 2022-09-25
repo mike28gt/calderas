@@ -1,22 +1,114 @@
 USE Calderas;
 
-ALTER TABLE dbo.caldera3 ADD tempagua real;
-ALTER TABLE dbo.caldera4 ADD tempagua real;
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'flama')
+    CREATE TABLE dbo.flama (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        Flama       REAL NOT NULL,
+        Fecha       SMALLDATETIME
+    );
 
-ALTER TABLE dbo.caldera1 ADD temchimenea real;
-ALTER TABLE dbo.caldera2 ADD temchimenea real;
-ALTER TABLE dbo.caldera3 ADD temchimenea real;
-ALTER TABLE dbo.caldera4 ADD temchimenea real;
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'gaspropano')
+    CREATE TABLE dbo.gaspropano (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        GPropano    TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
 
-EXEC sp_rename 
-@objname = 'dbo.caldera1.presionbunk', 
-@newname = 'presionbunker', 
-@objtype = 'COLUMN';
+IF NOT EXISTS (SELECT 1
+sFROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'ni_deaguaalto')
+    CREATE TABLE dbo.ni_deaguaalto (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        NiveA       TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    ); 
 
-EXEC sp_rename 
-@objname = 'dbo.caldera4.presionbunk', 
-@newname = 'presionbunker', 
-@objtype = 'COLUMN';
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'ni_deaguabajo')
+    CREATE TABLE dbo.ni_deaguabajo (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        NivelB      TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
+
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'pr_altovapor')
+    CREATE TABLE dbo.pr_altovapor (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        PrAlto      TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
+
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'pr_bajavapor')
+    CREATE TABLE dbo.pr_bajavapor (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        PreBaja     TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
+
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'prebunker')
+    CREATE TABLE dbo.prebunker (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        PreBunke    TINYINT NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
+
+
+
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'temagua')
+    CREATE TABLE dbo.temagua (
+        Id          INT IDENTITY(1,1) NOT NULL,
+        id_caldera  INT NOT NULL,
+        TAgua       REAL NOT NULL,
+        Fecha       SMALLDATETIME NOT NULL
+    );
+
+IF NOT EXISTS (SELECT 1
+FROM sys.tables t 
+JOIN sys.schemas s ON (t.schema_id = s.schema_id)
+WHERE s.name = 'dbo'
+  AND t.name = 'temchimenea')
+    CREATE TABLE dbo.temchimenea (
+        Id            INT IDENTITY(1,1) NOT NULL,
+        id_caldera    INT NOT NULL,
+        TemChimenea   REAL NOT NULL,
+        Fecha         SMALLDATETIME NOT NULL
+    );
 
 IF NOT EXISTS (SELECT 1
 FROM sys.tables t 

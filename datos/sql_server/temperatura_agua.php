@@ -15,18 +15,19 @@
             if ($tipoAlerta == "menor") {
                 $relacionAlerta = "<";
             }
-
+            /*
             $calderaObj = new CalderaDatos();
             $calderaObj->buscar($calderaId);
             $this->table_name = $calderaObj->get_tabla_datos();
-
+            */
             $sql = "SELECT t1.fechaPretty,
                            COUNT(1) AS cantidadAlertas
                     FROM (
-                            SELECT FORMAT(date, 'dd/MM/yyyy') AS fechaPretty
+                            SELECT FORMAT(Fecha, 'dd/MM/yyyy') AS fechaPretty
                             FROM " . $this->table_name . "
-                            WHERE date BETWEEN ? AND ?
-                            AND tempagua " . $relacionAlerta . " ?
+                            WHERE Fecha BETWEEN ? AND ?
+                              AND id_caldera = ? 
+                              AND TAgua " . $relacionAlerta . " ?
                         ) t1
                     GROUP BY t1.fechaPretty
                     ORDER BY t1.fechaPretty ASC";
@@ -34,7 +35,7 @@
             $fechaInicio = $fechaInicioObj->format('Y-m-d H:i:s');
             $fechaFin = $fechaFinObj->format('Y-m-d H:i:s');
 
-            $params = array(&$fechaInicio, &$fechaFin, &$valorAlerta);
+            $params = array(&$fechaInicio, &$fechaFin, &$calderaId, &$valorAlerta);
             $stmt = sqlsrv_query($conn, $sql, $params);
 			
             $rows = array();

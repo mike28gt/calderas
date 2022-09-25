@@ -20,6 +20,10 @@
 
 			return $arrayResultado;
 		}
+
+		public function buscar($calderaId) {
+			return null;
+		}
 	}
 
 ?>
