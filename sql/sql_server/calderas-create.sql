@@ -25,7 +25,7 @@ WHERE s.name = 'dbo'
     );
 
 IF NOT EXISTS (SELECT 1
-sFROM sys.tables t 
+FROM sys.tables t 
 JOIN sys.schemas s ON (t.schema_id = s.schema_id)
 WHERE s.name = 'dbo'
   AND t.name = 'ni_deaguaalto')

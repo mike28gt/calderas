@@ -7,10 +7,9 @@
 
         private $table_name = "gaspropano";
 
-        function getUltimoRegistro($id_caldera) {
+        function getUltimoRegistro($calderaId) {
             $conexion = new Conexion();
             $conn = $conexion->get_conn();
-
             $sql = "SELECT TOP 1 gpropano AS valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') AS fechaPretty FROM ". $this->table_name . " WHERE id_caldera = ? ORDER BY id";
 
             $params = array(&$calderaId);
@@ -35,7 +34,6 @@
                 }
 				sqlsrv_free_stmt($stmt);
 			}
-error_log("gas_propano row: " . print_r($row));
             return $row;
         }
 

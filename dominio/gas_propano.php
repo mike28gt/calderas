@@ -23,11 +23,9 @@
         public function getUltimaMedicion($calderaId) {
             $gasPropanoDatosObj = new GasPropanoDatos();
             $row = $gasPropanoDatosObj->getUltimoRegistro($calderaId);
-            error_log("getUltimaMedicion" . $row);
             if ($row !== null) {
                 $this->valor = $row["valor"];
                 $this->fechaGrabacion = $row["fechaPretty"];
-                error_log("getUltimaMedicion" . $this->fechaGrabacion);
             }
         }
 
