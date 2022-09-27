@@ -8,7 +8,7 @@
                 <div class="dropdown__menu">
                     <ul>
                         <?php
-                            switch ($_GET["caldera"]){
+                            switch (!empty($_GET["caldera"]) ? $_GET["caldera"] : 0) {
                                 case 1: echo   "<li><a href='caldera.php?caldera=2'>Caldera 2</a></li>
                                                 <li><a href='caldera.php?caldera=3'>Caldera 3</a></li>
                                                 <li><a href='caldera.php?caldera=4'>Caldera 4</a></li>";

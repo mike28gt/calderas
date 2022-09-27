@@ -12,6 +12,16 @@
 	$calderaObj = new Caldera();
 	$calderaObj->buscar($calderaId);
         
+        $calderaImgSrc = "";
+        $isDisplayed = true;
+        if ($calderaId == 1 || $calderaId == 2) {
+                $calderaImgSrc = "./img/caldera1.jpeg";
+        }
+        else if ($calderaId == 3 || $calderaId == 4) {
+                $calderaImgSrc = "./img/caldera3.jpeg";
+                $isDisplayed = false;
+        }
+
         //$nivel_agua_alto = new NivelAguaAlto();
         $flamaObj = new Flama();
         $flamaObj->getUltimaMedicion($calderaId);

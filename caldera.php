@@ -54,24 +54,18 @@
                     <span class="input-group-text" id="f">7. Flama</span>
                     <input type="text" class="form-control" id="f" value="<?php echo $datosFlama; ?>" name="fecha">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" <?php echo !$isDisplayed ? "style='display:none'" : ""; ?>>
                     <span class="input-group-text" id="f">8. Temp. de Agua</span>
                     <input type="text" class="form-control" id="f" value="<?php echo $datosTemperaturaAgua; ?>" name="fecha">
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" <?php echo !$isDisplayed ? "style='display:none'" : ""; ?>>
                     <span class="input-group-text" id="f">9. Temp. de Chimenea</span>
                     <input type="text" class="form-control" id="f" value="<?php echo $datosTemperaturaChimenea; ?>" name="fecha">
                 </div>
             </form>
     </div>
     <div>
-            <img src="./img/caldera1.jpeg" alt="">
-            <!--<div  class="boton">
-                <a href="#">Entradas Analogicas</a>
-            </div>
-            <div  class="boton">
-                <a href="#">Entradas Digitales</a>
-    </div>-->
+            <img src="<?php echo $calderaImgSrc ?>" alt="">
     </div>
 </div> 
 </body>
