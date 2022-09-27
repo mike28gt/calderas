@@ -10,23 +10,26 @@
 	$calderas = $calderaObj->getCalderasActivas();
 	$medicionObj->setNombre($nombreMedicion);
 	$medicionObj->getByName();
-        $titulo = "Ajustes de " . $medicionObj->getNombrePretty();
+    $titulo = "Ajustes de " . $medicionObj->getNombrePretty();
 	$bodyHTML = "";
 
 	foreach ($calderas as $calderaId => $numeroCaldera) {
-		$bodyHTML = $bodyHTML . "<div><h3>Caldera " . $numeroCaldera . "</h3>";
-		$bodyHTML = $bodyHTML . "<form class='variables'>";
-
 		$parametrosMedicion = $medicionObj->obtenerConfiguracionParametros($numeroCaldera);
-		foreach ($parametrosMedicion as $nombreParametroMedicion => $valor) {
-			$bodyHTML = $bodyHTML . "<div class='input-group mb-3'>" ;
-			$bodyHTML = $bodyHTML . "<span class='input-group-text'>".$medicionObj->getConfiguracionParametroMedicionNombrePretty($calderaId, $nombreParametroMedicion)."</span>";
-			$bodyHTML = $bodyHTML . "<input type='text' class='form-control get-data' id='".$numeroCaldera."-".$nombreParametroMedicion."-".$nombreMedicion."' value='".$valor."'>";
-			$bodyHTML = $bodyHTML . "</div>" ;
+		
+		if (count($parametrosMedicion) > 0) {
+
+			$bodyHTML = $bodyHTML . "<div><h3>Caldera " . $numeroCaldera . "</h3>";
+			$bodyHTML = $bodyHTML . "<form class='variables'>";
+
+			foreach ($parametrosMedicion as $nombreParametroMedicion => $valor) {
+				$bodyHTML = $bodyHTML . "<div class='input-group mb-3'>" ;
+				$bodyHTML = $bodyHTML . "<span class='input-group-text'>".$medicionObj->getConfiguracionParametroMedicionNombrePretty($calderaId, $nombreParametroMedicion)."</span>";
+				$bodyHTML = $bodyHTML . "<input type='text' class='form-control get-data' id='".$numeroCaldera."-".$nombreParametroMedicion."-".$nombreMedicion."' value='".$valor."'>";
+				$bodyHTML = $bodyHTML . "</div>" ;
+			}
+	
+			$bodyHTML = $bodyHTML . "</form>";
+			$bodyHTML = $bodyHTML . "</div></br>";
 		}
-
-		$bodyHTML = $bodyHTML . "</form>";
-		$bodyHTML = $bodyHTML . "</div></br>";
-
 	}
 ?>

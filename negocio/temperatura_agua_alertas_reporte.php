@@ -13,6 +13,8 @@
 
     foreach (array_keys($calderasLista) as $numeroCaldera) {
         $mediciones = $medicionObj->obtenerConfiguracionParametros($calderasLista[$numeroCaldera]);
-        $calderasFiltrosHtml = $calderasFiltrosHtml."<label class='form-check-label'>Caldera ".$numeroCaldera."</label>&nbsp;<input type='radio' class='form-check-input' name='filtroCaldera' temp_max='".$mediciones["temp_max"]."' temp_min='".$mediciones["temp_min"]."' value='".$calderasLista[$numeroCaldera]."'>&nbsp;&nbsp;&nbsp;&nbsp;";
+        if (count($mediciones) > 0) {
+            $calderasFiltrosHtml = $calderasFiltrosHtml."<label class='form-check-label'>Caldera ".$numeroCaldera."</label>&nbsp;<input type='radio' class='form-check-input' name='filtroCaldera' temp_max='".$mediciones["temp_max"]."' temp_min='".$mediciones["temp_min"]."' value='".$calderasLista[$numeroCaldera]."'>&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
     }    
 ?>
