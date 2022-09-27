@@ -4,6 +4,33 @@
 
     class GasPropano {
     
+        private $valor;
+        private $fechaGrabacion;
+
+        public function __construct() {
+            $this->valor = 0;
+            $this->fechaGrabacion = "No hay registros grabados";
+        }
+
+        public function getValor() {
+            return $this->valor;
+        }
+
+        public function getFechaGrabacion() {
+            return $this->fechaGrabacion;
+        }
+
+        public function getUltimaMedicion($calderaId) {
+            $gasPropanoDatosObj = new GasPropanoDatos();
+            $row = $gasPropanoDatosObj->getUltimoRegistro($calderaId);
+            error_log("getUltimaMedicion" . $row);
+            if ($row !== null) {
+                $this->valor = $row["valor"];
+                $this->fechaGrabacion = $row["fechaPretty"];
+                error_log("getUltimaMedicion" . $this->fechaGrabacion);
+            }
+        }
+
         public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId) {
 
             $gasPropanoObj = new GasPropanoDatos();

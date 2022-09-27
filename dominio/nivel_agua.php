@@ -5,6 +5,51 @@
 
     class NivelAgua {
     
+        private $valorBajo;
+        private $valorAlto;
+        private $fechaGrabacionValorBajo;
+        private $fechaGrabacionValorAlto;
+
+        public function __construct() {
+            $this->valorBajo = 0;
+            $this->valorAlto = 0;
+            $this->fechaGrabacionValorBajo = "No hay registros grabados";
+            $this->fechaGrabacionValorAlto = "No hay registros grabados";
+        }
+
+        public function getValorBajo() {
+            return $this->valorBajo;
+        }
+
+        public function getFechaGrabacionValorBajo() {
+            return $this->fechaGrabacionValorBajo;
+        }
+
+        public function getValorAlto() {
+            return $this->valorAlto;
+        }
+
+        public function getFechaGrabacionValorAlto() {
+            return $this->fechaGrabacionValorAlto;
+        }
+
+        public function getUltimaMedicion($calderaId) {
+            $nivelAguaAltoDatosObj = new NivelAguaAltoDatos();
+            $nivelAguaBajoDatosObj = new NivelAguaBajoDatos();
+            
+            $row = $nivelAguaAltoDatosObj->getUltimoRegistro($calderaId);
+            if ($row !== null) {
+                $this->valorAlto = $row["valor"];
+                $this->fechaGrabacionValorAlto = $row["fechaPretty"];
+            }
+
+            $row = $nivelAguaBajoDatosObj->getUltimoRegistro($calderaId);
+            if ($row !== null) {
+                $this->valorBajo = $row["valor"];
+                $this->fechaGrabacionValorBajo = $row["fechaPretty"];
+            }
+        }
+
         public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId, $tipoAlerta) {
 
             if ($tipoAlerta == "mayor") {

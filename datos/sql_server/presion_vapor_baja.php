@@ -7,6 +7,38 @@
 
         private $table_name = "pr_bajavapor";
 
+        function getUltimoRegistro($calderaId) {
+            $conexion = new Conexion();
+            $conn = $conexion->get_conn();
+
+            $sql = "SELECT TOP 1 PreBaja as valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') as fechaPretty FROM ". $this->table_name ." WHERE id_caldera = ? ORDER BY id DESC";
+
+            $params = array(&$calderaId);
+            $stmt = sqlsrv_query($conn, $sql, $params);
+			
+            $rows = array();
+            if ($stmt === false) {
+				if (($errors = sqlsrv_errors()) != null) {
+					foreach ($errors as $error) {
+						error_log( "SQLSTATE: ".$error[ 'SQLSTATE']."<br />");
+						error_log( "code: ".$error[ 'code']."<br />");
+						error_log( "message[presion_vapor_alta.php-getUltimoRegistro]: ".$error[ 'message']."<br />");
+					}
+				}
+			}
+			else {
+				if (sqlsrv_has_rows($stmt)) {
+                    $row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC);
+				}
+                else {
+                    $row = null;
+                }
+				sqlsrv_free_stmt($stmt);
+			}
+
+            return $row;
+        }
+
         public function getCantidadAlertasPorFechaPorCaldera($fechaInicioObj, $fechaFinObj, $calderaId) {
             $conexion = new Conexion();
 			$conn = $conexion->get_conn();

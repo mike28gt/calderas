@@ -42,7 +42,7 @@
 			return $this->id;
 		}
 
-		function get_num_caldera() {
+		function getNumCaldera() {
 			return $this->num_caldera;
 		}
 

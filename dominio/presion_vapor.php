@@ -5,6 +5,51 @@
 
     class PresionVapor {
     
+        private $valorAlto;
+        private $valorBajo;
+        private $fechaGrabacionValorAlto;
+        private $fechaGrabacionValorBajo;
+
+        public function __construct() {
+            $this->valorAlto = 0;
+            $this->valorBajo = 0;
+            $this->fechaGrabacionValorAlto = "No hay registros grabados";
+            $this->fechaGrabacionValorBajo = "No hay registros grabados";
+        }
+
+        public function getValorAlto() {
+            return $this->valorAlto;
+        }
+
+        public function getFechaGrabacionValorAlto() {
+            return $this->fechaGrabacionValorAlto;
+        }
+
+        public function getValorBajo() {
+            return $this->valorBajo;
+        }
+
+        public function getFechaGrabacionValorBajo() {
+            return $this->fechaGrabacionValorBajo;
+        }
+
+        public function getUltimaMedicion($calderaId) {
+            $presionVaporAltaDatosObj = new PresionVaporAltaDatos();
+            $presionVaporBajaDatosObj = new PresionVaporBajaDatos();
+
+            $row = $presionVaporAltaDatosObj->getUltimoRegistro($calderaId);
+            if ($row !== null) {
+                $this->valorAlto = $row["valor"];
+                $this->fechaGrabacionValorAlto = $row["fechaPretty"];
+            }
+
+            $row = $presionVaporBajaDatosObj->getUltimoRegistro($calderaId);
+            if ($row !== null) {
+                $this->valorBajo = $row["valor"];
+                $this->fechaGrabacionValorBajo = $row["fechaPretty"];
+            }
+        }
+
         public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId, $tipoAlerta) {
 
             if ($tipoAlerta == "mayor") {

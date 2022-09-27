@@ -3,9 +3,14 @@
 
 	class Caldera {
 		private $calderasObj;
+		private $nombre;
 
 		function __construct() {
 			$this->calderasObj = new CalderaDatos();
+		}
+
+		public function getNombre() {
+			return $this->nombre;
 		}
 
 		public function getCalderasActivas() {
@@ -22,7 +27,8 @@
 		}
 
 		public function buscar($calderaId) {
-			return null;
+			$this->calderasObj->buscar($calderaId);
+			$this->nombre = $this->calderasObj->getNumCaldera();
 		}
 	}
 

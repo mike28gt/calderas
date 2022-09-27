@@ -4,6 +4,31 @@
 
     class PresionBunker {
     
+        private $valor;
+        private $fechaGrabacion;
+
+        public function __construct() {
+            $this->valor = 0;
+            $this->fechaGrabacion = "No hay registros grabados";
+        }
+
+        public function getValor() {
+            return $this->valor;
+        }
+
+        public function getFechaGrabacion() {
+            return $this->fechaGrabacion;
+        }
+
+        public function getUltimaMedicion($calderaId) {
+            $presionBunkerDatosObj = new PresionBunkerDatos();
+            $row = $presionBunkerDatosObj->getUltimoRegistro($calderaId);
+            if ($row !== null) {
+                $this->valor = $row["valor"];
+                $this->fechaGrabacion = $row["fechaPretty"];
+            }
+        }
+
         public function getDatosReporteAlertas($fechaInicio, $fechaFin, $calderaId) {
 
             $presionBunkerDatosObj = new PresionBunkerDatos();
