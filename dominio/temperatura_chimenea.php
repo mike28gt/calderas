@@ -4,12 +4,18 @@
 
     class TemperaturaChimenea {
     
+        private $id;
         private $valor;
         private $fechaGrabacion;
 
         public function __construct() {
+            $this->id = 0;
             $this->valor = 0;
             $this->fechaGrabacion = "No hay registros grabados";
+        }
+
+        public function getId() {
+            return $this->id;
         }
 
         public function getValor() {

@@ -4,17 +4,28 @@
     require_once($_SERVER['DOCUMENT_ROOT'].'/calderas/datos/sql_server/presion_vapor_baja.php');
 
     class PresionVapor {
-    
+        private $idAlto;
+        private $idBajo;
         private $valorAlto;
         private $valorBajo;
         private $fechaGrabacionValorAlto;
         private $fechaGrabacionValorBajo;
 
         public function __construct() {
+            $this->idAlto = 0;
+            $this->idBajo = 0;
             $this->valorAlto = 0;
             $this->valorBajo = 0;
             $this->fechaGrabacionValorAlto = "No hay registros grabados";
             $this->fechaGrabacionValorBajo = "No hay registros grabados";
+        }
+
+        public function getIdAlto() {
+            return $this->idAlto;
+        }
+
+        public function getIdBajo() {
+            return $this->idBajo;
         }
 
         public function getValorAlto() {
@@ -39,12 +50,14 @@
 
             $row = $presionVaporAltaDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->idAlto = $row["id"];
                 $this->valorAlto = $row["valor"];
                 $this->fechaGrabacionValorAlto = $row["fechaPretty"];
             }
 
             $row = $presionVaporBajaDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->idBajo = $row["id"];
                 $this->valorBajo = $row["valor"];
                 $this->fechaGrabacionValorBajo = $row["fechaPretty"];
             }

@@ -25,31 +25,31 @@
         //$nivel_agua_alto = new NivelAguaAlto();
         $flamaObj = new Flama();
         $flamaObj->getUltimaMedicion($calderaId);
-        $datosFlama = $flamaObj->getValor() . " " . $flamaObj->getFechaGrabacion();
+        $datosFlama = $flamaObj->getId() . " " . $flamaObj->getFechaGrabacion();
         
         $gasPropanoObj = new GasPropano();
         $gasPropanoObj->getUltimaMedicion($calderaId);
-        $datosGasPropano = $gasPropanoObj->getValor() . " " . $gasPropanoObj->getFechaGrabacion();
+        $datosGasPropano = $gasPropanoObj->getId() . " " . $gasPropanoObj->getFechaGrabacion();
 
         $nivelAguaObj = new NivelAgua();
         $nivelAguaObj->getUltimaMedicion($calderaId);
-        $datosNivelAguaBajo = $nivelAguaObj->getValorBajo() . " " . $nivelAguaObj->getFechaGrabacionValorBajo();
-        $datosNivelAguaAlto = $nivelAguaObj->getValorAlto() . " " . $nivelAguaObj->getFechaGrabacionValorAlto();
+        $datosNivelAguaBajo = $nivelAguaObj->getIdBajo() . " " . $nivelAguaObj->getFechaGrabacionValorBajo();
+        $datosNivelAguaAlto = $nivelAguaObj->getIdAlto() . " " . $nivelAguaObj->getFechaGrabacionValorAlto();
 
         $presionBunkerObj = new PresionBunker();
         $presionBunkerObj->getUltimaMedicion($calderaId);
-        $datosPresionBunker = $presionBunkerObj->getValor() . " " .$presionBunkerObj->getFechaGrabacion();
+        $datosPresionBunker = $presionBunkerObj->getId() . " " .$presionBunkerObj->getFechaGrabacion();
 
         $presionVaporObj = new PresionVapor();
         $presionVaporObj->getUltimaMedicion($calderaId);
-        $datoPresionBajaVapor = $presionVaporObj->getValorBajo() . " " .$presionVaporObj->getFechaGrabacionValorBajo();
-        $datosPresionAltaVapor = $presionVaporObj->getValorAlto() . " " .$presionVaporObj->getFechaGrabacionValorAlto();
+        $datoPresionBajaVapor = $presionVaporObj->getIdBajo() . " " .$presionVaporObj->getFechaGrabacionValorBajo();
+        $datosPresionAltaVapor = $presionVaporObj->getIdAlto() . " " .$presionVaporObj->getFechaGrabacionValorAlto();
 
         $temperaturaAguaObj = new TemperaturaAgua();
         $temperaturaAguaObj->getUltimaMedicion($calderaId);
-        $datosTemperaturaAgua = $temperaturaAguaObj->getValor() . " " .$temperaturaAguaObj->getFechaGrabacion();
+        $datosTemperaturaAgua = $temperaturaAguaObj->getId() . " " .$temperaturaAguaObj->getFechaGrabacion();
 
 	$temperaturaChimeneaObj = new TemperaturaChimenea();
         $temperaturaChimeneaObj->getUltimaMedicion($calderaId);
-        $datosTemperaturaChimenea = $temperaturaChimeneaObj->getValor() . " " .$temperaturaChimeneaObj->getFechaGrabacion();
+        $datosTemperaturaChimenea = $temperaturaChimeneaObj->getId() . " " .$temperaturaChimeneaObj->getFechaGrabacion();
 ?>

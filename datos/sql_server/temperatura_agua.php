@@ -11,7 +11,7 @@
             $conexion = new Conexion();
             $conn = $conexion->get_conn();
 
-            $sql = "SELECT TOP 1 TAgua as valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') as fechaPretty FROM ". $this->table_name ." WHERE id_caldera = ? ORDER BY id DESC";
+            $sql = "SELECT TOP 1 id, TAgua as valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') as fechaPretty FROM ". $this->table_name ." WHERE id_caldera = ? ORDER BY id DESC";
 
             $params = array(&$calderaId);
             $stmt = sqlsrv_query($conn, $sql, $params);

@@ -66,6 +66,7 @@ body{
     left: 0;
     top: 80%;
     background-color: white;
+    z-index: 1;
 }
 
 .menu__bar ul li:hover .dropdown__menu ul{
@@ -153,7 +154,7 @@ body{
     color: var(--color-black1);
     text-decoration: none;
 }
-@media(max-width:768px){
+@media(max-width:600px){
     .screen{
         flex-direction: column;
     }

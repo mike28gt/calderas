@@ -4,12 +4,18 @@
 
     class PresionBunker {
     
+        private $id;
         private $valor;
         private $fechaGrabacion;
 
         public function __construct() {
+            $this->id = 0;
             $this->valor = 0;
             $this->fechaGrabacion = "No hay registros grabados";
+        }
+
+        public function getId() {
+            return $this->id;
         }
 
         public function getValor() {
@@ -24,6 +30,7 @@
             $presionBunkerDatosObj = new PresionBunkerDatos();
             $row = $presionBunkerDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->id = $row["id"];
                 $this->valor = $row["valor"];
                 $this->fechaGrabacion = $row["fechaPretty"];
             }

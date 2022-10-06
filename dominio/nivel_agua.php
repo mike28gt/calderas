@@ -5,16 +5,28 @@
 
     class NivelAgua {
     
+        private $idAlto;
+        private $idBajo;
         private $valorBajo;
         private $valorAlto;
         private $fechaGrabacionValorBajo;
         private $fechaGrabacionValorAlto;
 
         public function __construct() {
+            $this->idAlto = 0;
+            $this->idBajo = 0;
             $this->valorBajo = 0;
             $this->valorAlto = 0;
             $this->fechaGrabacionValorBajo = "No hay registros grabados";
             $this->fechaGrabacionValorAlto = "No hay registros grabados";
+        }
+
+        public function getIdAlto() {
+            return $this->idAlto;
+        }
+
+        public function getIdBajo() {
+            return $this->idBajo;
         }
 
         public function getValorBajo() {
@@ -39,12 +51,14 @@
             
             $row = $nivelAguaAltoDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->idAlto = $row["id"];
                 $this->valorAlto = $row["valor"];
                 $this->fechaGrabacionValorAlto = $row["fechaPretty"];
             }
 
             $row = $nivelAguaBajoDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->idBajo = $row["id"];
                 $this->valorBajo = $row["valor"];
                 $this->fechaGrabacionValorBajo = $row["fechaPretty"];
             }

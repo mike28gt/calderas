@@ -10,7 +10,7 @@
         function getUltimoRegistro($calderaId) {
             $conexion = new Conexion();
             $conn = $conexion->get_conn();
-            $sql = "SELECT TOP 1 gpropano AS valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') AS fechaPretty FROM ". $this->table_name . " WHERE id_caldera = ? ORDER BY id";
+            $sql = "SELECT TOP 1 id, gpropano AS valor, FORMAT(fecha, 'dd/MM/yyyy HH:mm:ss') AS fechaPretty FROM ". $this->table_name . " WHERE id_caldera = ? ORDER BY id";
 
             $params = array(&$calderaId);
             $stmt = sqlsrv_query($conn, $sql, $params);
