@@ -30,6 +30,7 @@
             $temperaturaChimeneaDatosObj = new TemperaturaChimeneaDatos();
             $row = $temperaturaChimeneaDatosObj->getUltimoRegistro($calderaId);
             if ($row !== null) {
+                $this->id = $row["id"];
                 $this->valor = $row["valor"];
                 $this->fechaGrabacion = $row["fechaPretty"];
             }
